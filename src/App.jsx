@@ -1,15 +1,13 @@
-import { } from 'react'
-
-import './App.css'
+import {} from "react";
+import Auth from "./components/Auth";
+import "./App.css";
 
 function App() {
-
-
   return (
     <>
-      
+      <Auth />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
