@@ -25,12 +25,12 @@ const StudentForm = ({ onAdd }) => {
   };
 
   return (
-    <>
+    <div className="bg-gray-300 my-5">
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-md rounded-lg p-6 max-w-md mx-auto mt-8 space-y-4"
+        className="p-6 max-w-md mx-auto mt-5 space-y-4 bg-gray-400 bg-opacity-100 shadow-lg rounded-xl"
       >
-        <h2 className="text-2xl font-semibold text-center text-gray-700">
+        <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center">
           Add Student
         </h2>
         <input
@@ -49,14 +49,28 @@ const StudentForm = ({ onAdd }) => {
           onChange={handleChange}
           className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
-        <input
+
+        <select
+        name="course"
+          value={form.course}
+          placeholder="Course"
+          onChange={handleChange}
+          className="w-full px-4 py-2 mb-6 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer bg-gray-300 bg-opacity-100"
+        >
+          <option value="">Select</option>
+          <option value="Math">Math</option>
+          <option value="Science">Science</option>
+          <option value="English">English</option>
+        </select>
+
+        {/* <input
           name="course"
           type="text"
           placeholder="Course"
           value={form.course}
           onChange={handleChange}
           className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
+        /> */}
         <button
           type="submit"
           className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-color cursor-pointer"
@@ -65,7 +79,7 @@ const StudentForm = ({ onAdd }) => {
         </button>
       </form>
       <ToastContainer position="top-right" autoClose={1500} />
-    </>
+    </div>
   );
 };
 
