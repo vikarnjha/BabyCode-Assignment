@@ -66,7 +66,6 @@ npm run dev
 
 ---
 
-
 ## ✅ Assignment Objectives Covered
 
 - Firebase login/logout functionality
