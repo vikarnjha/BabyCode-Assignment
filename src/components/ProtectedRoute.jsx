@@ -1,31 +1,40 @@
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
+import { useEffect, useState } from "react";
+import Loading from "../components/Loading";
 
 const ProtectedRoute = ({ children }) => {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
+  const [redirect, setRedirect] = useState(false);
 
-  if (!user) {
-    console.log("User not authenticated, redirecting...");
-    toast.info("You are not logged in!");
-    return <Navigate to="/" replace />;
-  }
+  useEffect(() => {
+    if (!loading && !user) {
+      toast.info("You are not logged in!");
+      setRedirect(true);
+    }
+  }, [loading, user]);
 
+  if (loading) return <Loading />;
+  if (redirect) return <Navigate to="/" replace />;
   return children;
 };
 
 const HomeRoute = ({ children }) => {
-  const { user} = useAuth();
+  const { user, loading } = useAuth();
+  const [redirect, setRedirect] = useState(false);
 
-  if (user) {
-    console.log("Already logged in, redirecting...");
-    toast.info("You are already logged in!");
-    return <Navigate to="/home" replace />;
+  useEffect(() => {
+    if (!loading && user) {
+      toast.info("You are already logged in!");
+      setRedirect(true);
+    }
+  }, [loading, user]);
 
-  }
+  if (loading) return <Loading />;
+  if (redirect) return <Navigate to="/home" replace />;
   return children;
 };
 
-<ToastContainer position="top-right" autoClose={1000} />;
 
 export { ProtectedRoute, HomeRoute };

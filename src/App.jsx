@@ -1,7 +1,6 @@
 import "./App.css";
-// import { AuthProvider } from "./context/AuthContext";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer} from "react-toastify";
 import Auth from "./components/Auth";
 import Navbar from "./components/Navbar";
 import Profile from "./components/Profile";
@@ -15,7 +14,6 @@ const App = () => {
   const handleAddStudent = (student) => {
     // setStudentList((prev) => [...prev, { id: Date.now(), ...student }]);
     console.log(student);
-    toast.success("Student added successfully!");
   };
 
   return (

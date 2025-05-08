@@ -6,6 +6,7 @@ import {
 import { auth } from "../firebase";
 import { ToastContainer, toast } from "react-toastify";
 import { FaUser, FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
+import Loading from "./Loading";
 
 const Auth = () => {
   const [action, setAction] = useState("Sign In");
@@ -15,6 +16,7 @@ const Auth = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleForgotPassword = () => {
     toast.info("Not implemented yet!");
@@ -33,6 +35,7 @@ const Auth = () => {
       toast.warn("Passwords do not match.");
       return;
     }
+    setIsLoading(true);
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       toast.success("Registration successful!");
@@ -44,6 +47,7 @@ const Auth = () => {
     } catch (err) {
       toast.error("Registration failed " + err.code);
     }
+    setIsLoading(false);
   };
 
   const handleLogin = async () => {
@@ -51,6 +55,7 @@ const Auth = () => {
       toast.warn("Please enter both email and password.");
       return;
     }
+    setIsLoading(true);
     try {
       await signInWithEmailAndPassword(auth, email, password);
       toast.success("Login successful!");
@@ -59,10 +64,12 @@ const Auth = () => {
     } catch (err) {
       toast.error("Login failed " + err.code);
     }
+    setIsLoading(false);
   };
 
   return (
     <>
+      {isLoading && <Loading />}
       <div className="h-full py-10 flex justify-center items-center bg-gray-300 text-white">
         <div className="bg-gray-800 p-6 md:p-8 rounded-2xl shadow-xl w-full max-w-md">
           <h2 className="text-3xl font-semibold text-center mb-6">{action}</h2>

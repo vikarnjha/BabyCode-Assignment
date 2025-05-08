@@ -1,28 +1,22 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
+import { useStudent } from "../context/StudentContext";
 
 const mock = new AxiosMockAdapter(axios, { delayResponse: 1000 });
+
 const mockData = [
   { id: 1, name: "Alice", email: "alice@example.com", course: "Math" },
   { id: 2, name: "Bob", email: "bob@example.com", course: "English" },
-  { id: 3, name: "Charlie", email: "charlie@example.com", course: "Math" },
-  { id: 4, name: "David", email: "david@example.com", course: "Science" },
+  { id: 3, name: "Charlie", email: "charlie@example.com", course: "Science" },
+  { id: 4, name: "David", email: "david@example.com", course: "Math" },
   { id: 5, name: "Eve", email: "eve@example.com", course: "English" },
   { id: 6, name: "Frank", email: "frank@example.com", course: "Science" },
-  { id: 7, name: "Grace", email: "grace@example.com", course: "Math" },
-  { id: 8, name: "Henry", email: "henry@example.com", course: "English" },
-  { id: 9, name: "Ivy", email: "ivy@example.com", course: "Math" },
-  { id: 10, name: "Jack", email: "jack@example.com", course: "Science" },
-  { id: 11, name: "Kelly", email: "kelly@example.com", course: "English" },
-  { id: 12, name: "Liam", email: "liam@example.com", course: "Science" },
-  { id: 13, name: "Mia", email: "mia@example.com", course: "English" },
-  { id: 14, name: "Noah", email: "noah@example.com", course: "Science" },
-  { id: 15, name: "Olivia", email: "olivia@example.com", course: "Math" },
 ];
 mock.onGet("/api/students").reply(200, mockData);
 
 const StudentList = () => {
+  const { studentItems } = useStudent();
   const [students, setStudents] = useState([]);
   const [course, setCourse] = useState("");
 
@@ -30,9 +24,10 @@ const StudentList = () => {
     axios.get("/api/students").then((res) => setStudents(res.data));
   }, []);
 
+  const allStudents = [...students, ...studentItems]; // Combine mock + new
   const filtered = course
-    ? students.filter((student) => student.course === course)
-    : students;
+    ? allStudents.filter((student) => student.course === course)
+    : allStudents;
 
   return (
     <div className="min-h-screen w-full bg-gray-300 py-5">

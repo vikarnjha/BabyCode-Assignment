@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
+import { useStudent } from "../context/StudentContext";
 
-const StudentForm = ({ onAdd }) => {
+const StudentForm = () => {
   const { user } = useAuth();
   const [form, setForm] = useState({ name: "", email: "", course: "" });
+  const { addToList } = useStudent();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,11 +21,19 @@ const StudentForm = ({ onAdd }) => {
       toast.warning("All fields are required.");
       return;
     }
-    onAdd(form);
+
+    const newStudent = {
+      id: Date.now(),
+      name,
+      email,
+      course,
+    };
+
+    addToList(newStudent);
     setForm({ name: "", email: "", course: "" });
     toast.success("Student added successfully!");
   };
- 
+
   return (
     <div className="h-full w-full flex justify-center items-center bg-gray-300 py-5">
       <form
