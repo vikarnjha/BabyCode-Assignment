@@ -1,13 +1,12 @@
-import { useState } from "react";
 import "./App.css";
 // import { AuthProvider } from "./context/AuthContext";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import Auth from "./components/Auth";
-import StudentList from "./components/StudentList";
-import StudentForm from "./components/StudentForm";
 import Navbar from "./components/Navbar";
 import Profile from "./components/Profile";
-import { ToastContainer, toast } from "react-toastify";
+import StudentForm from "./components/StudentForm";
+import StudentList from "./components/StudentList";
 
 const App = () => {
   // const [studentList, setStudentList] = useState([]);
@@ -38,7 +37,7 @@ const App = () => {
             path="/home"
             element={
               // <ProtectedRoute>
-              <div className="flex flex-col h-dvh">
+              <div>
                 <Navbar />
                 <StudentList />
               </div>

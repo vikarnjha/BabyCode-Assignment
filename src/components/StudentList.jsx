@@ -35,7 +35,7 @@ const StudentList = () => {
     : students;
 
   return (
-    <div className="min-h-screen w-full bg-gray-300 my-5">
+    <div className="min-h-screen w-full bg-gray-300 py-5">
       <div className="max-w-md mx-auto p-5 bg-gray-400 bg-opacity-100 shadow-lg rounded-xl">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center">
           Filter by Course

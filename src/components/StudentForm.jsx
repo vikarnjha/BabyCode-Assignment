@@ -23,9 +23,9 @@ const StudentForm = ({ onAdd }) => {
     setForm({ name: "", email: "", course: "" });
     toast.success("Student added successfully!");
   };
-
+ 
   return (
-    <div className="bg-gray-300 my-5">
+    <div className="h-full w-full flex justify-center items-center bg-gray-300 py-5">
       <form
         onSubmit={handleSubmit}
         className="p-6 max-w-md mx-auto mt-5 space-y-4 bg-gray-400 bg-opacity-100 shadow-lg rounded-xl"

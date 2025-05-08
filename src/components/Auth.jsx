@@ -63,7 +63,7 @@ const Auth = () => {
 
   return (
     <>
-      <div className="my-10 flex justify-center items-center bg-gray-300 text-white">
+      <div className="h-full py-10 flex justify-center items-center bg-gray-300 text-white">
         <div className="bg-gray-800 p-6 md:p-8 rounded-2xl shadow-xl w-full max-w-md">
           <h2 className="text-3xl font-semibold text-center mb-6">{action}</h2>
 
