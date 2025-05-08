@@ -11,7 +11,10 @@ const ProtectedRoute = ({ children }) => {
   useEffect(() => {
     if (!loading && !user) {
       toast.info("You are not logged in!");
-      setRedirect(true);
+      const timer = setTimeout(() => {
+        setRedirect(true);
+      }, 1500);
+      return () => clearTimeout(timer);
     }
   }, [loading, user]);
 
@@ -20,6 +23,7 @@ const ProtectedRoute = ({ children }) => {
   return children;
 };
 
+// HomeRoute.jsx
 const HomeRoute = ({ children }) => {
   const { user, loading } = useAuth();
   const [redirect, setRedirect] = useState(false);
@@ -27,7 +31,10 @@ const HomeRoute = ({ children }) => {
   useEffect(() => {
     if (!loading && user) {
       toast.info("You are already logged in!");
-      setRedirect(true);
+      const timer = setTimeout(() => {
+        setRedirect(true);
+      }, 1500);
+      return () => clearTimeout(timer);
     }
   }, [loading, user]);
 
@@ -35,6 +42,5 @@ const HomeRoute = ({ children }) => {
   if (redirect) return <Navigate to="/home" replace />;
   return children;
 };
-
 
 export { ProtectedRoute, HomeRoute };

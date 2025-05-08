@@ -1,6 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { ToastContainer} from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import Auth from "./components/Auth";
 import Navbar from "./components/Navbar";
 import Profile from "./components/Profile";
@@ -9,13 +9,6 @@ import StudentList from "./components/StudentList";
 import { ProtectedRoute, HomeRoute } from "./components/ProtectedRoute";
 
 const App = () => {
-  // const [studentList, setStudentList] = useState([]);
-
-  const handleAddStudent = (student) => {
-    // setStudentList((prev) => [...prev, { id: Date.now(), ...student }]);
-    console.log(student);
-  };
-
   return (
     <>
       <BrowserRouter>
@@ -60,7 +53,7 @@ const App = () => {
               <ProtectedRoute>
                 <div className="flex flex-col h-dvh">
                   <Navbar />
-                  <StudentForm onAdd={handleAddStudent} />
+                  <StudentForm />
                 </div>
               </ProtectedRoute>
             }

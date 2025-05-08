@@ -3,15 +3,15 @@ import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 import { useStudent } from "../context/StudentContext";
 
-const mock = new AxiosMockAdapter(axios, { delayResponse: 1000 });
+const mock = new AxiosMockAdapter(axios, { delayResponse: 1500 });
 
 const mockData = [
   { id: 1, name: "Alice", email: "alice@example.com", course: "Math" },
   { id: 2, name: "Bob", email: "bob@example.com", course: "English" },
   { id: 3, name: "Charlie", email: "charlie@example.com", course: "Science" },
-  { id: 4, name: "David", email: "david@example.com", course: "Math" },
-  { id: 5, name: "Eve", email: "eve@example.com", course: "English" },
-  { id: 6, name: "Frank", email: "frank@example.com", course: "Science" },
+  // { id: 4, name: "David", email: "david@example.com", course: "Math" },
+  // { id: 5, name: "Eve", email: "eve@example.com", course: "English" },
+  // { id: 6, name: "Frank", email: "frank@example.com", course: "Science" },
 ];
 mock.onGet("/api/students").reply(200, mockData);
 

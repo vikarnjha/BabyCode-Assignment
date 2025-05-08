@@ -4,11 +4,13 @@ import {
   createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../firebase";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { FaUser, FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import Loading from "./Loading";
 
 const Auth = () => {
+  const navigate = useNavigate();
   const [action, setAction] = useState("Sign In");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -44,6 +46,7 @@ const Auth = () => {
       setEmail("");
       setPassword("");
       setConfirmPassword("");
+      navigate("/home");
     } catch (err) {
       toast.error("Registration failed " + err.code);
     }
@@ -61,6 +64,7 @@ const Auth = () => {
       toast.success("Login successful!");
       setEmail("");
       setPassword("");
+      navigate("/home");
     } catch (err) {
       toast.error("Login failed " + err.code);
     }
