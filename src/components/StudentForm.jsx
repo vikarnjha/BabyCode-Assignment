@@ -51,7 +51,7 @@ const StudentForm = ({ onAdd }) => {
         />
 
         <select
-        name="course"
+          name="course"
           value={form.course}
           placeholder="Course"
           onChange={handleChange}
@@ -63,14 +63,6 @@ const StudentForm = ({ onAdd }) => {
           <option value="English">English</option>
         </select>
 
-        {/* <input
-          name="course"
-          type="text"
-          placeholder="Course"
-          value={form.course}
-          onChange={handleChange}
-          className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-        /> */}
         <button
           type="submit"
           className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-color cursor-pointer"
@@ -78,7 +70,7 @@ const StudentForm = ({ onAdd }) => {
           Add Student
         </button>
       </form>
-      <ToastContainer position="top-right" autoClose={1500} />
+      <ToastContainer position="top-right" autoClose={1000} />
     </div>
   );
 };

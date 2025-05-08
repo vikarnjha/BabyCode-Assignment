@@ -4,6 +4,9 @@ import "./App.css";
 import Auth from "./components/Auth";
 import StudentList from "./components/StudentList";
 import StudentForm from "./components/StudentForm";
+// import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const App = () => {
   const [studentList, setStudentList] = useState([]);
@@ -43,6 +46,7 @@ const App = () => {
           </ul>
         </div>
       </div>
+      {/* <ToastContainer position="top-right" autoClose={1000} /> */}
     </>
   );
 };
