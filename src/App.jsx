@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import Profile from "./components/Profile";
 import StudentForm from "./components/StudentForm";
 import StudentList from "./components/StudentList";
+import { ProtectedRoute, HomeRoute } from "./components/ProtectedRoute";
 
 const App = () => {
   // const [studentList, setStudentList] = useState([]);
@@ -24,46 +25,46 @@ const App = () => {
           <Route
             path="/"
             element={
-              // <HomeRoute>
-              <div className="flex flex-col h-dvh">
-                <Navbar />
-                <Auth />
-              </div>
-              // </HomeRoute>
+              <HomeRoute>
+                <div className="flex flex-col h-dvh">
+                  <Navbar />
+                  <Auth />
+                </div>
+              </HomeRoute>
             }
           />
           {/* Protected Routes */}
           <Route
             path="/home"
             element={
-              // <ProtectedRoute>
-              <div>
-                <Navbar />
-                <StudentList />
-              </div>
-              // </ProtectedRoute>
+              <ProtectedRoute>
+                <div>
+                  <Navbar />
+                  <StudentList />
+                </div>
+              </ProtectedRoute>
             }
           />
           <Route
             path="/profile"
             element={
-              // <ProtectedRoute>
-              <div className="flex flex-col h-dvh">
-                <Navbar />
-                <Profile />
-              </div>
-              // </ProtectedRoute>
+              <ProtectedRoute>
+                <div className="flex flex-col h-dvh">
+                  <Navbar />
+                  <Profile />
+                </div>
+              </ProtectedRoute>
             }
           />
           <Route
             path="/add"
             element={
-              // <ProtectedRoute>
-              <div className="flex flex-col h-dvh">
-                <Navbar />
-                <StudentForm onAdd={handleAddStudent} />
-              </div>
-              // </ProtectedRoute>
+              <ProtectedRoute>
+                <div className="flex flex-col h-dvh">
+                  <Navbar />
+                  <StudentForm onAdd={handleAddStudent} />
+                </div>
+              </ProtectedRoute>
             }
           />
         </Routes>
