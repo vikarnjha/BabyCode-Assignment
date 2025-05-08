@@ -26,4 +26,6 @@ const HomeRoute = ({ children }) => {
   return children;
 };
 
+<ToastContainer position="top-right" autoClose={1000} />;
+
 export { ProtectedRoute, HomeRoute };
