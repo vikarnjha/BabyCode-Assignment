@@ -1,4 +1,4 @@
-# 🎓 Student Management Dashboard
+# 🎓 Student Management System
 
 A simple and responsive React-based student management system built as part of an internship assignment. It supports secure authentication with Firebase, student listing with filtering by course, and adding new students (only when logged in).
 
@@ -69,12 +69,12 @@ npm run dev
 
 ## ✅ Assignment Objectives Covered
 
-- ✅ Firebase login/logout functionality
-- ✅ Protected routes using React Router
-- ✅ Display and filter the student list
-- ✅ Auth-protected add student form
-- ✅ State management via context/hooks
-- ✅ User feedback with toast messages
+- Firebase login/logout functionality
+- Protected routes using React Router
+- Display and filter the student list
+- Auth-protected add student form
+- State management via context/hooks
+- User feedback with toast messages
 
 ---
 
